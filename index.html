@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<style>body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Fahhar Kids Toptan Sipariş</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Instrument+Sans:wght@500;600&display=swap">
+<style>
+/* Layout: tek sütun kart listesi, üstte yapışkan başlık + kategori çipleri, altta yapışkan sipariş çubuğu; özet sayfanın sonunda */
+:root {
+  --bg: #FFFFFF; --fg: #1C1C1C; --muted: #6E6E6E; --line: #E4E2DD; --soft: #F4F3F0; --ink: #1C1C1C; --ink-fg: #FFFFFF; --warn: #C8102E;
+  --display: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --body: "Nunito", "Segoe UI", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #141414; --fg: #F2F0EC; --muted: #A09D97; --line: #2E2D2A; --soft: #1F1E1C; --ink: #F2F0EC; --ink-fg: #141414; --warn: #E8485F; color-scheme: dark } }
+:root[data-theme="dark"] { --bg: #141414; --fg: #F2F0EC; --muted: #A09D97; --line: #2E2D2A; --soft: #1F1E1C; --ink: #F2F0EC; --ink-fg: #141414; --warn: #E8485F; color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.45; margin: 0; padding-bottom: 96px; -webkit-font-smoothing: antialiased }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)) }
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line) }
+header.top .wrap { padding-block: 10px 8px; display: flex; flex-direction: column; gap: 8px }
+.brandrow { display: flex; align-items: center; justify-content: space-between; gap: 12px }
+.brand { font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: .32em; text-transform: uppercase }
+.lang { display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden }
+.lang button { background: none; border: 0; color: var(--muted); font: 600 12px var(--display); padding: 5px 11px; cursor: pointer; letter-spacing: .04em }
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--ink-fg) }
+.chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px }
+.chips::-webkit-scrollbar { display: none }
+.chips button { flex: 0 0 auto; background: var(--soft); border: 1px solid transparent; color: var(--fg); font: 600 12.5px var(--body); padding: 6px 12px; border-radius: 999px; cursor: pointer; white-space: nowrap }
+.chips button[aria-pressed="true"] { background: var(--ink); color: var(--ink-fg) }
+.intro { padding-block: 22px 10px }
+h1 { font-family: var(--display); font-weight: 600; font-size: 24px; letter-spacing: .14em; text-transform: uppercase; margin: 0 0 4px; text-wrap: balance }
+.season { color: var(--muted); font-family: var(--display); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 12px }
+.notes { color: var(--muted); font-size: 13.5px; margin: 0; max-width: 62ch }
+.notes p { margin: 0 0 6px }
+.list { display: flex; flex-direction: column; gap: 0; padding-block: 6px 24px }
+.card { display: grid; grid-template-columns: 84px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line) }
+.card[hidden] { display: none }
+.card img { width: 84px; height: auto; aspect-ratio: 3 / 4; align-self: start; object-fit: cover; border-radius: 6px; background: var(--soft); display: block; max-width: 100% }
+.info { min-width: 0; display: flex; flex-direction: column; gap: 4px }
+.title { font-weight: 700; font-size: 14.5px; line-height: 1.25 }
+.title .kod { font-family: var(--display); font-weight: 600; color: var(--muted); font-size: 12px; letter-spacing: .06em; margin-right: 8px }
+.meta { color: var(--muted); font-size: 12.5px }
+.price { font-weight: 800; font-size: 16px; letter-spacing: .01em }
+.price small { font-weight: 600; color: var(--muted); font-size: 12px; margin-left: 4px }
+.ctrl { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 4px; flex-wrap: wrap }
+.stepper { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 8px; overflow: hidden }
+.stepper button { width: 40px; height: 36px; background: var(--ink); color: var(--ink-fg); border: 0; font: 800 18px var(--body); cursor: pointer }
+.stepper button:focus-visible, .chips button:focus-visible, .lang button:focus-visible, .btn:focus-visible, .lnk:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px }
+.stepper input { width: 52px; height: 36px; border: 0; text-align: center; font: 700 16px var(--body); background: var(--bg); color: var(--fg); font-variant-numeric: tabular-nums }
+.stepper input:focus { outline: none; background: var(--soft) }
+.seri-lbl { font-size: 11px; color: var(--muted); font-family: var(--display); letter-spacing: .08em; text-transform: uppercase; margin-right: 6px }
+.sizes { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px }
+.sizes span { font-size: 11px; line-height: 1; padding: 5px 7px; border: 1px solid var(--line); border-radius: 6px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap }
+.sizes span b { color: var(--fg); font-weight: 800; margin-left: 4px }
+.card.on .sizes span { border-color: var(--fg); color: var(--fg) }
+.linetot { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; min-height: 1.2em }
+.linetot b { color: var(--fg); font-weight: 700 }
+.card.on { background: linear-gradient(90deg, var(--soft), transparent 60%) }
+.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--ink); color: var(--ink-fg); padding-top: 10px; padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px)); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)) }
+.bar .in { max-width: 760px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px }
+.bar .sum { font-variant-numeric: tabular-nums; font-size: 13.5px; line-height: 1.3 }
+.bar .sum b { font-size: 15px; font-weight: 800 }
+.bar .btn { background: var(--ink-fg); color: var(--ink); border: 0; border-radius: 8px; padding: 10px 14px; font: 700 13.5px var(--body); cursor: pointer; white-space: nowrap }
+.summary { padding-block: 10px 40px; border-top: 2px solid var(--fg) }
+.summary h2 { font-family: var(--display); font-weight: 600; font-size: 16px; letter-spacing: .14em; text-transform: uppercase; margin: 18px 0 6px }
+.summary .hint { color: var(--muted); font-size: 13px; margin: 0 0 12px }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; font-variant-numeric: tabular-nums }
+th { text-align: left; font-family: var(--display); font-weight: 600; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 6px 4px; border-bottom: 1px solid var(--line) }
+td { padding: 7px 4px; border-bottom: 1px solid var(--line); vertical-align: top }
+td.n, th.n { text-align: right; white-space: nowrap }
+td:first-child { white-space: nowrap; font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: .04em }
+.tbl-wrap { overflow-x: auto }
+.totals { display: grid; grid-template-columns: 1fr auto; gap: 6px 16px; margin-top: 14px; font-variant-numeric: tabular-nums; max-width: 420px; margin-left: auto }
+.totals .k { color: var(--muted) }
+.totals .v { text-align: right; font-weight: 700 }
+.totals .grand { font-weight: 800; font-size: 16px; padding-top: 6px; border-top: 1px solid var(--line) }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px }
+.lnk, .btn2 { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 8px; padding: 11px 16px; font: 700 14px var(--body); text-decoration: none; cursor: pointer; border: 1px solid var(--ink) }
+.lnk { background: var(--ink); color: var(--ink-fg) }
+.btn2 { background: transparent; color: var(--fg); border-color: var(--line) }
+.lnk[aria-disabled="true"] { opacity: .4; pointer-events: none }
+.msgbox { margin-top: 14px; white-space: pre-wrap; font: 12.5px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--soft); border-radius: 8px; padding: 12px; color: var(--fg); max-height: 260px; overflow: auto }
+.empty { color: var(--muted); font-size: 13.5px; padding: 12px 0 }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(84px + env(safe-area-inset-bottom, 0px)); background: var(--fg); color: var(--bg); padding: 8px 14px; border-radius: 999px; font-size: 13px; opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 7 }
+.toast.show { opacity: 1 }
+@media (prefers-reduced-motion: reduce) { .toast { transition: none } }
+@media (min-width: 560px) { .card { grid-template-columns: 96px 1fr } .card img { width: 96px } }
+
+.gate { position: fixed; inset: 0; z-index: 20; background: var(--bg); display: flex; align-items: center; justify-content: center; padding: 24px }
+.gate form { width: 100%; max-width: 360px; display: flex; flex-direction: column; gap: 12px }
+.gate .brand { margin-bottom: 8px }
+.gate label { font-size: 13px; color: var(--muted) }
+.gate input { width: 100%; height: 44px; border: 1px solid var(--line); border-radius: 8px; padding: 0 12px; font: 600 16px var(--body); background: var(--bg); color: var(--fg) }
+.gate button { height: 44px; border: 0; border-radius: 8px; background: var(--ink); color: var(--ink-fg); font: 700 15px var(--body); cursor: pointer }
+.gate .err { color: var(--warn); font-size: 13px; min-height: 1.2em; margin: 0 }
+</style>
+</head>
+<body>
+<div class="gate" id="gate">
+  <form id="gateForm" autocomplete="off">
+    <div class="brand" lang="en">Fahhar Kids</div>
+    <label for="gateCode" data-t="gateLbl">Erişim kodu</label>
+    <input type="password" id="gateCode" autocapitalize="off" spellcheck="false">
+    <button type="submit" data-t="gateBtn">Devam</button>
+    <p class="err" id="gateErr"></p>
+  </form>
+</div>
+
+
+<header class="top">
+  <div class="wrap">
+    <div class="brandrow">
+      <div class="brand" lang="en">Fahhar Kids</div>
+      <div class="lang" role="group" aria-label="Dil">
+        <button type="button" id="lang-tr" aria-pressed="true">TR</button>
+        <button type="button" id="lang-en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Kategori"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="intro">
+    <h1 data-t="baslik">Toptan Sipariş</h1>
+    <p class="season" data-t="sezon">Animal Playground · Sonbahar Kış FW27 · Ekim 2026</p>
+    <div class="notes">
+      <p data-t="not1">Fiyatlar KDV hariç toptan fiyatlardır; faturaya %10 KDV eklenir. Perakende liste fiyatı önerilen satış fiyatıdır.</p>
+      <p data-t="not2">Sipariş seri bazındadır: 1 seri = her bedenden 1 adet. + ile seri ekleyin, aşağıda özet kendiliğinden oluşur; "WhatsApp ile gönder" ile siparişi iletin.</p>
+    </div>
+  </section>
+  <section class="list" id="list" aria-live="polite"></section>
+
+  <section class="summary" id="summary">
+    <h2 data-t="ozet">Sipariş Listesi</h2>
+    <p class="hint" data-t="ozetHint">Seri girilen ürünler burada listelenir.</p>
+    <div id="sumBody"></div>
+    <div class="actions">
+      <a class="lnk" id="waLink" href="#" target="_blank" rel="noopener" aria-disabled="true" data-t="wa">WhatsApp ile gönder</a>
+      <button type="button" class="btn2" id="copyBtn" data-t="kopyala">Metni kopyala</button>
+      <button type="button" class="btn2" id="clearBtn" data-t="temizle">Siparişi sıfırla</button>
+    </div>
+    <p class="hint" style="margin-top:10px" data-t="waHint">WhatsApp açılmazsa metni kopyalayıp +90 541 834 95 53 numarasına gönderin.</p>
+    <pre class="msgbox" id="msgBox" hidden></pre>
+  </section>
+</main>
+
+<div class="bar" id="bar" hidden>
+  <div class="in">
+    <div class="sum" id="barSum"></div>
+    <button type="button" class="btn" id="barBtn" data-t="ozeteGit">Özete git</button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const URUNLER = [{"kod": "AP-01", "h": "kadife-yaka-trenc-ceket-kahverengi", "ad": "Kadife Yaka Trenç Ceket Kahverengi", "model": "Kadife Yaka Trenç Ceket", "renk": "Kahverengi", "kat": "Ceket", "liste": 2649.9, "toptan": 1204.5, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/kadife-yaka-trenc-ceket-kahverengi-13487.jpg?width=300"}, {"kod": "AP-02", "h": "kadife-yaka-trenc-ceket-haki", "ad": "Kadife Yaka Trenç Ceket Haki", "model": "Kadife Yaka Trenç Ceket", "renk": "Haki", "kat": "Ceket", "liste": 2649.9, "toptan": 1204.5, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/kadife-yaka-trenc-ceket-haki-13491.jpg?width=300"}, {"kod": "AP-03", "h": "dik-yaka-ekose-detayli-ceket-kirmizi", "ad": "Dik Yaka Ekose Detaylı Ceket Kırmızı", "model": "Dik Yaka Ekose Detaylı Ceket", "renk": "Kırmızı", "kat": "Ceket", "liste": 2699.9, "toptan": 1227.23, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/dik-yaka-ekose-detayli-ceket-kirmizi-13699.jpg?width=300"}, {"kod": "AP-04", "h": "dik-yaka-ekose-detayli-ceket-camel", "ad": "Dik Yaka Ekose Detaylı Ceket Camel", "model": "Dik Yaka Ekose Detaylı Ceket", "renk": "Camel", "kat": "Ceket", "liste": 2699.9, "toptan": 1227.23, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/dik-yaka-ekose-detayli-ceket-camel-13705.jpg?width=300"}, {"kod": "AP-05", "h": "ekose-kanguru-takim-kirmizi", "ad": "Ekose Kanguru Takım Kırmızı", "model": "Ekose Kanguru Takım", "renk": "Kırmızı", "kat": "Takım", "liste": 2299.9, "toptan": 1045.41, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/ekose-kanguru-takim-kirmizi-13399.jpg?width=300"}, {"kod": "AP-06", "h": "ekose-kanguru-takim-yesil", "ad": "Ekose Kanguru Takım Yeşil", "model": "Ekose Kanguru Takım", "renk": "Yeşil", "kat": "Takım", "liste": 2299.9, "toptan": 1045.41, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/ekose-kanguru-takim-yesil-13433.jpg?width=300"}, {"kod": "AP-07", "h": "ekose-kanguru-takim-kahverengi", "ad": "Ekose Kanguru Takım Kahverengi", "model": "Ekose Kanguru Takım", "renk": "Kahverengi", "kat": "Takım", "liste": 2299.9, "toptan": 1045.41, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/ekose-kanguru-takim-kahverengi-13425.jpg?width=300"}, {"kod": "AP-08", "h": "genis-yakali-denim-takim-lacivert", "ad": "Geniş Yakalı Denim Takım Lacivert", "model": "Geniş Yakalı Denim Takım", "renk": "Lacivert", "kat": "Takım", "liste": 3299.9, "toptan": 1499.95, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/genis-yakali-denim-takim-lacivert-13258.jpg?width=300"}, {"kod": "AP-09", "h": "kareli-buzgulu-elbise-kirmizi", "ad": "Kareli Büzgülü Elbise Kırmızı", "model": "Kareli Büzgülü Elbise", "renk": "Kırmızı", "kat": "Elbise", "liste": 1799.9, "toptan": 818.14, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/kareli-buzgulu-elbise-kirmizi-13650.jpg?width=300"}, {"kod": "AP-10", "h": "nakisli-genis-patli-gomlek-kirmizi", "ad": "Nakışlı Geniş Patlı Gömlek Kırmızı", "model": "Nakışlı Geniş Patlı Gömlek", "renk": "Kırmızı", "kat": "Gömlek", "liste": 1849.9, "toptan": 840.86, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/nakisli-genis-patli-gomlek-kirmizi-13603.jpg?width=300"}, {"kod": "AP-11", "h": "nakisli-genis-patli-gomlek-sari", "ad": "Nakışlı Geniş Patlı Gömlek Sarı", "model": "Nakışlı Geniş Patlı Gömlek", "renk": "Sarı", "kat": "Gömlek", "liste": 1849.9, "toptan": 840.86, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/nakisli-genis-patli-gomlek-sari-13622.jpg?width=300"}, {"kod": "AP-12", "h": "nakisli-genis-patli-gomlek-beyaz", "ad": "Nakışlı Geniş Patlı Gömlek Beyaz", "model": "Nakışlı Geniş Patlı Gömlek", "renk": "Beyaz", "kat": "Gömlek", "liste": 1849.9, "toptan": 840.86, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/nakisli-genis-patli-gomlek-beyaz-13600.jpg?width=300"}, {"kod": "AP-13", "h": "ekose-oversize-gomlek-kirmizi", "ad": "Ekose Oversize Gömlek Kırmızı", "model": "Ekose Oversize Gömlek", "renk": "Kırmızı", "kat": "Gömlek", "liste": 1499.9, "toptan": 681.77, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/ekose-oversize-gomlek-kirmizi-13575.jpg?width=300"}, {"kod": "AP-14", "h": "ekose-oversize-gomlek-kahverengi", "ad": "Ekose Oversize Gömlek Kahverengi", "model": "Ekose Oversize Gömlek", "renk": "Kahverengi", "kat": "Gömlek", "liste": 1499.9, "toptan": 681.77, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/ekose-oversize-gomlek-kahverengi-13572.jpg?width=300"}, {"kod": "AP-15", "h": "ekose-oversize-gomlek-lacivert", "ad": "Ekose Oversize Gömlek Lacivert", "model": "Ekose Oversize Gömlek", "renk": "Lacivert", "kat": "Gömlek", "liste": 1499.9, "toptan": 681.77, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/ekose-oversize-gomlek-lacivert-13558.jpg?width=300"}, {"kod": "AP-16", "h": "cift-dugmeli-cizgili-gomlek-beyaz", "ad": "Çift Düğmeli Çizgili Gömlek Beyaz", "model": "Çift Düğmeli Çizgili Gömlek", "renk": "Beyaz", "kat": "Gömlek", "liste": 1799.9, "toptan": 818.14, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/cift-dugmeli-cizgili-gomlek-beyaz-13592.jpg?width=300"}, {"kod": "AP-17", "h": "oval-buzgulu-gomlek-kirmizi", "ad": "Oval Büzgülü Gömlek Kırmızı", "model": "Oval Büzgülü Gömlek", "renk": "Kırmızı", "kat": "Gömlek", "liste": 1549.9, "toptan": 704.5, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/oval-buzgulu-gomlek-kirmizi-13672.jpg?width=300"}, {"kod": "AP-18", "h": "oval-buzgulu-gomlek-mavi", "ad": "Oval Büzgülü Gömlek Mavi", "model": "Oval Büzgülü Gömlek", "renk": "Mavi", "kat": "Gömlek", "liste": 1549.9, "toptan": 704.5, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/oval-buzgulu-gomlek-mavi-13678.jpg?width=300"}, {"kod": "AP-19", "h": "oval-buzgulu-gomlek-pembe", "ad": "Oval Büzgülü Gömlek Pembe", "model": "Oval Büzgülü Gömlek", "renk": "Pembe", "kat": "Gömlek", "liste": 1549.9, "toptan": 704.5, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/oval-buzgulu-gomlek-pembe-13683.jpg?width=300"}, {"kod": "AP-20", "h": "fularli-pamuk-cizgili-uzun-kollu-tisort-kirmizi", "ad": "Fularlı Pamuk Çizgili Uzun Kollu Tişört Kırmızı", "model": "Fularlı Pamuk Çizgili Uzun Kollu Tişört", "renk": "Kırmızı", "kat": "Tişört", "liste": 1499.9, "toptan": 681.77, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/fularli-pamuk-cizgili-uzun-kollu-tisort-kirmizi-13136.jpg?width=300"}, {"kod": "AP-21", "h": "fularli-pamuk-cizgili-uzun-kollu-tisort-siyah", "ad": "Fularlı Pamuk Çizgili Uzun Kollu Tişört Siyah", "model": "Fularlı Pamuk Çizgili Uzun Kollu Tişört", "renk": "Siyah", "kat": "Tişört", "liste": 1499.9, "toptan": 681.77, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/fularli-pamuk-cizgili-uzun-kollu-tisort-siyah-13157.jpg?width=300"}, {"kod": "AP-22", "h": "fularli-pamuk-cizgili-uzun-kollu-tisort-pembe", "ad": "Fularlı Pamuk Çizgili Uzun Kollu Tişört Pembe", "model": "Fularlı Pamuk Çizgili Uzun Kollu Tişört", "renk": "Pembe", "kat": "Tişört", "liste": 1499.9, "toptan": 681.77, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/fularli-pamuk-cizgili-uzun-kollu-tisort-pembe-13121.jpg?width=300"}, {"kod": "AP-23", "h": "fularli-pamuk-cizgili-uzun-kollu-tisort-haki", "ad": "Fularlı Pamuk Çizgili Uzun Kollu Tişört Haki", "model": "Fularlı Pamuk Çizgili Uzun Kollu Tişört", "renk": "Haki", "kat": "Tişört", "liste": 1499.9, "toptan": 681.77, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/fularli-pamuk-cizgili-uzun-kollu-tisort-haki-13122.jpg?width=300"}, {"kod": "AP-24", "h": "nakisli-uzun-kollu-t-shirt-kirmizi", "ad": "Nakışlı Uzun Kollu T-shirt Kırmızı", "model": "Nakışlı Uzun Kollu T-shirt", "renk": "Kırmızı", "kat": "Tişört", "liste": 1199.9, "toptan": 545.41, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/nakisli-uzun-kollu-t-shirt-kirmizi-13239.jpg?width=300"}, {"kod": "AP-25", "h": "nakisli-uzun-kollu-t-shirt-kahverengi", "ad": "Nakışlı Uzun Kollu T-shirt Kahverengi", "model": "Nakışlı Uzun Kollu T-shirt", "renk": "Kahverengi", "kat": "Tişört", "liste": 1199.9, "toptan": 545.41, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/nakisli-uzun-kollu-t-shirt-kahverengi-13224.jpg?width=300"}, {"kod": "AP-26", "h": "nakisli-uzun-kollu-t-shirt-beyaz", "ad": "Nakışlı Uzun Kollu T-shirt Beyaz", "model": "Nakışlı Uzun Kollu T-shirt", "renk": "Beyaz", "kat": "Tişört", "liste": 1199.9, "toptan": 545.41, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/nakisli-uzun-kollu-t-shirt-beyaz-13247.jpg?width=300"}, {"kod": "AP-27", "h": "nakisli-uzun-kollu-t-shirt-pembe", "ad": "Nakışlı Uzun Kollu T-shirt Pembe", "model": "Nakışlı Uzun Kollu T-shirt", "renk": "Pembe", "kat": "Tişört", "liste": 1199.9, "toptan": 545.41, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/nakisli-uzun-kollu-t-shirt-pembe-13211.jpg?width=300"}, {"kod": "AP-28", "h": "nakisli-uzun-kollu-t-shirt-lacivert", "ad": "Nakışlı Uzun Kollu T-shirt Lacivert", "model": "Nakışlı Uzun Kollu T-shirt", "renk": "Lacivert", "kat": "Tişört", "liste": 1199.9, "toptan": 545.41, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/nakisli-uzun-kollu-t-shirt-lacivert-13216.jpg?width=300"}, {"kod": "AP-29", "h": "reglan-kol-tisort-kirmizi", "ad": "Reglan Kol Tişört Kırmızı", "model": "Reglan Kol Tişört", "renk": "Kırmızı", "kat": "Tişört", "liste": 1099.9, "toptan": 499.95, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/reglan-kol-tisort-kirmizi-13196.jpg?width=300"}, {"kod": "AP-30", "h": "reglan-kol-tisort-mavi", "ad": "Reglan Kol Tişört Mavi", "model": "Reglan Kol Tişört", "renk": "Mavi", "kat": "Tişört", "liste": 1099.9, "toptan": 499.95, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/reglan-kol-tisort-mavi-13188.jpg?width=300"}, {"kod": "AP-31", "h": "reglan-kol-tisort-kahverengi", "ad": "Reglan Kol Tişört Kahverengi", "model": "Reglan Kol Tişört", "renk": "Kahverengi", "kat": "Tişört", "liste": 1099.9, "toptan": 499.95, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/reglan-kol-tisort-kahverengi-13174.jpg?width=300"}, {"kod": "AP-32", "h": "reglan-kol-tisort-pembe", "ad": "Reglan Kol Tişört Pembe", "model": "Reglan Kol Tişört", "renk": "Pembe", "kat": "Tişört", "liste": 1099.9, "toptan": 499.95, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/reglan-kol-tisort-pembe-13172.jpg?width=300"}, {"kod": "AP-33", "h": "kargo-pantolon-yesil", "ad": "Kargo Pantolon Yeşil", "model": "Kargo Pantolon", "renk": "Yeşil", "kat": "Pantolon", "liste": 1499.9, "toptan": 681.77, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/kargo-pantolon-yesil-13318.jpg?width=300"}, {"kod": "AP-34", "h": "kargo-pantolon-siyah", "ad": "Kargo Pantolon Siyah", "model": "Kargo Pantolon", "renk": "Siyah", "kat": "Pantolon", "liste": 1499.9, "toptan": 681.77, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/kargo-pantolon-siyah-13326.jpg?width=300"}, {"kod": "AP-35", "h": "kargo-pantolon-kahverengi", "ad": "Kargo Pantolon Kahverengi", "model": "Kargo Pantolon", "renk": "Kahverengi", "kat": "Pantolon", "liste": 1499.9, "toptan": 681.77, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/kargo-pantolon-kahverengi-13312.jpg?width=300"}, {"kod": "AP-36", "h": "straight-denim-pantolon-lacivert", "ad": "Straight Denim Pantolon Lacivert", "model": "Straight Denim Pantolon", "renk": "Lacivert", "kat": "Pantolon", "liste": 1699.9, "toptan": 772.68, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/straight-denim-pantolon-lacivert-13838.jpg?width=300"}, {"kod": "AP-37", "h": "parca-detayli-barrel-pantolon-beyaz", "ad": "Parça Detaylı Barrel Pantolon Beyaz", "model": "Parça Detaylı Barrel Pantolon", "renk": "Beyaz", "kat": "Pantolon", "liste": 1399.9, "toptan": 636.32, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/parca-detayli-barrel-pantolon-beyaz-13347.jpg?width=300"}, {"kod": "AP-38", "h": "parca-detayli-barrel-pantolon-camel", "ad": "Parça Detaylı Barrel Pantolon Camel", "model": "Parça Detaylı Barrel Pantolon", "renk": "Camel", "kat": "Pantolon", "liste": 1399.9, "toptan": 636.32, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/parca-detayli-barrel-pantolon-camel-13333.jpg?width=300"}, {"kod": "AP-39", "h": "parca-detayli-barrel-pantolon-tas", "ad": "Parça Detaylı Barrel Pantolon Taş", "model": "Parça Detaylı Barrel Pantolon", "renk": "Taş", "kat": "Pantolon", "liste": 1399.9, "toptan": 636.32, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/parca-detayli-barrel-pantolon-tas-13341.jpg?width=300"}, {"kod": "AP-40", "h": "ekose-barrel-pantolon-kirmizi", "ad": "Ekose Barrel Pantolon Kırmızı", "model": "Ekose Barrel Pantolon", "renk": "Kırmızı", "kat": "Pantolon", "liste": 1299.9, "toptan": 590.86, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/ekose-barrel-pantolon-kirmizi-13547.jpg?width=300"}, {"kod": "AP-41", "h": "ekose-barrel-pantolon-kahverengi", "ad": "Ekose Barrel Pantolon Kahverengi", "model": "Ekose Barrel Pantolon", "renk": "Kahverengi", "kat": "Pantolon", "liste": 1299.9, "toptan": 590.86, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/ekose-barrel-pantolon-kahverengi-13552.jpg?width=300"}, {"kod": "AP-42", "h": "ekose-barrel-pantolon-bej", "ad": "Ekose Barrel Pantolon Bej", "model": "Ekose Barrel Pantolon", "renk": "Bej", "kat": "Pantolon", "liste": 1299.9, "toptan": 590.86, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/ekose-barrel-pantolon-bej-13535.jpg?width=300"}, {"kod": "AP-43", "h": "garni-cepli-oversize-pantolon-mavi", "ad": "Garni Cepli Oversize Pantolon Mavi", "model": "Garni Cepli Oversize Pantolon", "renk": "Mavi", "kat": "Pantolon", "liste": 1199.9, "toptan": 545.41, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/garni-cepli-oversize-pantolon-mavi-13629.jpg?width=300"}, {"kod": "AP-44", "h": "garni-cepli-oversize-pantolon-sari", "ad": "Garni Cepli Oversize Pantolon Sarı", "model": "Garni Cepli Oversize Pantolon", "renk": "Sarı", "kat": "Pantolon", "liste": 1199.9, "toptan": 545.41, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/garni-cepli-oversize-pantolon-sari-13623.jpg?width=300"}, {"kod": "AP-45", "h": "garni-cepli-oversize-pantolon-krem", "ad": "Garni Cepli Oversize Pantolon Krem", "model": "Garni Cepli Oversize Pantolon", "renk": "Krem", "kat": "Pantolon", "liste": 1199.9, "toptan": 545.41, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/garni-cepli-oversize-pantolon-krem-13639.jpg?width=300"}, {"kod": "AP-46", "h": "pileli-college-etek-kirmizi", "ad": "Pileli College Etek Kırmızı", "model": "Pileli College Etek", "renk": "Kırmızı", "kat": "Etek", "liste": 999.9, "toptan": 454.5, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/pileli-college-etek-kirmizi-13768.jpg?width=300"}, {"kod": "AP-47", "h": "pileli-college-etek-beyaz", "ad": "Pileli College Etek Beyaz", "model": "Pileli College Etek", "renk": "Beyaz", "kat": "Etek", "liste": 999.9, "toptan": 454.5, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/pileli-college-etek-beyaz-13763.jpg?width=300"}, {"kod": "AP-48", "h": "pileli-college-etek-camel", "ad": "Pileli College Etek Camel", "model": "Pileli College Etek", "renk": "Camel", "kat": "Etek", "liste": 999.9, "toptan": 454.5, "bedenler": ["1-2 Yaş", "2-3 Yaş", "3-4 Yaş", "4-5 Yaş", "5-6 Yaş", "6-7 Yaş", "7-8 Yaş"], "img": "https://cdn.shopify.com/s/files/1/0695/5981/2282/files/pileli-college-etek-camel-13773.jpg?width=300"}];
+const WA_NUMARA = "905418349553";
+const KDV = 0.10;
+const T = {
+  tr: { baslik: "Toptan Sipariş", sezon: "Animal Playground · Sonbahar Kış FW27 · Ekim 2026",
+    not1: "Fiyatlar KDV hariç toptan fiyatlardır; faturaya %10 KDV eklenir. Perakende liste fiyatı önerilen satış fiyatıdır.",
+    not2: "Sipariş seri bazındadır: 1 seri = her bedenden 1 adet. + ile seri ekleyin, aşağıda özet kendiliğinden oluşur; \"WhatsApp ile gönder\" ile siparişi iletin.",
+    tumu: "Tümü", perakende: "Perakende {f} TL", bedenler: "Bedenler {a} – {b}", parca: "1 seri = {n} parça", toptan: "Toptan", kdv: "+ KDV", seri: "Seri", bedenlerLbl: "Bedenler ve adet",
+    ozet: "Sipariş Listesi", ozetHint: "Seri girilen ürünler burada listelenir.", bos: "Henüz seri girilmedi.", kol: ["Kod", "Ürün", "Seri", "Adet", "Birim", "Tutar"],
+    toplamAdet: "Toplam adet", ara: "Ara toplam (KDV hariç)", kdvS: "KDV %10", genel: "Genel toplam (KDV dahil)",
+    wa: "WhatsApp ile gönder", kopyala: "Metni kopyala", kopyalandi: "Kopyalandı", temizle: "Siparişi sıfırla", ozeteGit: "Özete git",
+    waHint: "WhatsApp açılmazsa metni kopyalayıp +90 541 834 95 53 numarasına gönderin.",
+    barSeri: "{s} seri · {a} adet", msgBaslik: "Fahhar Kids toptan siparişi", msgSeri: "seri", msgAdet: "adet", msgAra: "Ara toplam (KDV hariç)", msgGenel: "Genel toplam (KDV dahil)",
+    gateLbl: "Erişim kodu", gateBtn: "Devam", gateErr: "Kod hatalı.", yas: b => b },
+  en: { baslik: "Wholesale Order", sezon: "Animal Playground · Autumn Winter FW27 · October 2026",
+    not1: "Prices are wholesale prices in Turkish Lira, excluding VAT; 10% VAT is added on the invoice. The retail list price is the recommended selling price.",
+    not2: "Orders are placed by set: 1 set = 1 piece of each size. Add sets with +, the summary below fills in automatically; send the order with \"Send via WhatsApp\".",
+    tumu: "All", perakende: "Retail {f} TL", bedenler: "Sizes {a} – {b}", parca: "1 set = {n} pcs", toptan: "Wholesale", kdv: "+ VAT", seri: "Sets", bedenlerLbl: "Sizes and quantity",
+    ozet: "Order List", ozetHint: "Products with sets entered are listed here.", bos: "No sets entered yet.", kol: ["Code", "Product", "Sets", "Pcs", "Unit", "Amount"],
+    toplamAdet: "Total pieces", ara: "Subtotal (excl. VAT)", kdvS: "VAT 10%", genel: "Grand total (incl. VAT)",
+    wa: "Send via WhatsApp", kopyala: "Copy text", kopyalandi: "Copied", temizle: "Clear order", ozeteGit: "Go to summary",
+    waHint: "If WhatsApp does not open, copy the text and send it to +90 541 834 95 53.",
+    barSeri: "{s} sets · {a} pcs", msgBaslik: "Fahhar Kids wholesale order", msgSeri: "sets", msgAdet: "pcs", msgAra: "Subtotal (excl. VAT)", msgGenel: "Grand total (incl. VAT)",
+    gateLbl: "Access code", gateBtn: "Continue", gateErr: "Incorrect code.", yas: b => b.replace(" Yaş", " yrs") }
+};
+const KATLAR = ["Ceket", "Takım", "Elbise", "Gömlek", "Tişört", "Pantolon", "Etek"];
+const KAT_EN = { "Ceket": "Jackets", "Takım": "Sets", "Elbise": "Dresses", "Gömlek": "Shirts", "Tişört": "T-shirts", "Pantolon": "Trousers", "Etek": "Skirts" };
+let dil = "tr", kat = "", seri = {};
+try { const d = JSON.parse(localStorage.getItem("fk-toptan-seri") || "{}"); if (d && typeof d === "object") seri = d; } catch (e) {}
+try { const l = localStorage.getItem("fk-toptan-dil"); if (l === "en" || l === "tr") dil = l; } catch (e) {}
+const tl = x => x.toLocaleString("tr-TR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const fmt = (s, o) => s.replace(/\{(\w+)\}/g, (_, k) => o[k]);
+const $ = id => document.getElementById(id);
+function kaydet() { try { localStorage.setItem("fk-toptan-seri", JSON.stringify(seri)); localStorage.setItem("fk-toptan-dil", dil); } catch (e) {} }
+function metinler() {
+  const t = T[dil];
+  document.querySelectorAll("[data-t]").forEach(el => { const k = el.dataset.t; if (t[k]) el.textContent = t[k]; });
+  $("lang-tr").setAttribute("aria-pressed", dil === "tr"); $("lang-en").setAttribute("aria-pressed", dil === "en");
+  document.documentElement.lang = dil;
+}
+function cipler() {
+  const t = T[dil]; const c = $("chips"); c.innerHTML = "";
+  [["", t.tumu], ...KATLAR.map(k => [k, dil === "en" ? KAT_EN[k] : k])].forEach(([v, ad]) => {
+    const b = document.createElement("button"); b.type = "button"; b.textContent = ad; b.setAttribute("aria-pressed", kat === v);
+    b.addEventListener("click", () => { kat = v; cipler(); filtrele(); }); c.appendChild(b);
+  });
+}
+function kartlar() {
+  const t = T[dil]; const l = $("list"); l.innerHTML = "";
+  URUNLER.forEach(u => {
+    const n = u.bedenler.length;
+    const card = document.createElement("article"); card.className = "card"; card.dataset.kod = u.kod; card.dataset.kat = u.kat;
+    card.innerHTML = `
+      <img src="${u.img}" alt="${u.ad}" loading="lazy" width="240" height="320">
+      <div class="info">
+        <div class="title"><span class="kod">${u.kod}</span>${u.ad}</div>
+        <div class="meta">${fmt(t.perakende, { f: tl(u.liste) })} · ${fmt(t.parca, { n })}</div>
+        <div class="price">${t.toptan} ${tl(u.toptan)} TL<small>${t.kdv}</small></div>
+        <div class="sizes" id="sz-${u.kod}" aria-label="${t.bedenlerLbl}"></div>
+        <div class="ctrl">
+          <div><span class="seri-lbl">${t.seri}</span><span class="stepper">
+            <button type="button" data-d="-1" aria-label="−1 ${t.seri}">−</button>
+            <input type="number" inputmode="numeric" min="0" max="999" step="1" id="seri-${u.kod}" value="${seri[u.kod] || ""}" placeholder="0" aria-label="${u.ad} ${t.seri}">
+            <button type="button" data-d="1" aria-label="+1 ${t.seri}">+</button></span></div>
+          <div class="linetot" id="lt-${u.kod}"></div>
+        </div>
+      </div>`;
+    card.querySelectorAll("button[data-d]").forEach(b => b.addEventListener("click", () => { ayarla(u.kod, (seri[u.kod] || 0) + Number(b.dataset.d)); }));
+    const inp = card.querySelector("input");
+    inp.addEventListener("input", () => { const v = Math.max(0, Math.min(999, Math.floor(Number(inp.value) || 0))); if (v) seri[u.kod] = v; else delete seri[u.kod]; kaydet(); satir(u); ozet(); });
+    inp.addEventListener("blur", () => { inp.value = seri[u.kod] || ""; });
+    l.appendChild(card); satir(u);
+  });
+  filtrele();
+}
+function ayarla(kod, v) {
+  v = Math.max(0, Math.min(999, v)); if (v) seri[kod] = v; else delete seri[kod];
+  const inp = $("seri-" + kod); if (inp) inp.value = v || ""; kaydet();
+  satir(URUNLER.find(u => u.kod === kod)); ozet();
+}
+function satir(u) {
+  const s = seri[u.kod] || 0; const n = u.bedenler.length; const el = $("lt-" + u.kod); const card = el.closest(".card");
+  card.classList.toggle("on", s > 0);
+  el.innerHTML = s > 0 ? `${s * n} ${T[dil].msgAdet} · <b>${tl(s * n * u.toptan)} TL</b>` : "";
+  const sz = $("sz-" + u.kod); if (sz) sz.innerHTML = u.bedenler.map(b => `<span>${T[dil].yas(b).replace(" Yaş", "").replace(" yrs", "")}${s > 0 ? "<b>" + s + "</b>" : ""}</span>`).join("");
+}
+function filtrele() { document.querySelectorAll(".card").forEach(c => { c.hidden = !!kat && c.dataset.kat !== kat; }); }
+function siparis() {
+  const rows = URUNLER.filter(u => seri[u.kod] > 0).map(u => { const s = seri[u.kod], n = u.bedenler.length, adet = s * n; return { u, s, adet, tutar: Math.round(adet * u.toptan * 100) / 100 }; });
+  const adet = rows.reduce((a, r) => a + r.adet, 0), ara = Math.round(rows.reduce((a, r) => a + r.tutar, 0) * 100) / 100;
+  const kdv = Math.round(ara * KDV * 100) / 100, genel = Math.round((ara + kdv) * 100) / 100, toplamSeri = rows.reduce((a, r) => a + r.s, 0);
+  return { rows, adet, ara, kdv, genel, toplamSeri };
+}
+function mesaj(o) {
+  const t = T[dil]; const L = [t.msgBaslik, T[dil].sezon, ""];
+  o.rows.forEach(r => L.push(`${r.u.kod} ${r.u.ad} - ${r.s} ${t.msgSeri} (${r.adet} ${t.msgAdet}) - ${tl(r.tutar)} TL`, `   ${r.u.bedenler.map(b => t.yas(b).replace(" Yaş", "").replace(" yrs", "") + ": " + r.s).join(", ")}`));
+  L.push("", `${t.toplamAdet}: ${o.adet}`, `${t.msgAra}: ${tl(o.ara)} TL`, `${t.kdvS}: ${tl(o.kdv)} TL`, `${t.msgGenel}: ${tl(o.genel)} TL`);
+  return L.join("\n");
+}
+function ozet() {
+  const t = T[dil]; const o = siparis(); const sb = $("sumBody"); const bar = $("bar");
+  if (!o.rows.length) {
+    sb.innerHTML = `<p class="empty">${t.bos}</p>`; bar.hidden = true; $("msgBox").hidden = true;
+    $("waLink").setAttribute("aria-disabled", "true"); $("waLink").href = "#"; return;
+  }
+  sb.innerHTML = `<div class="tbl-wrap"><table><thead><tr><th>${t.kol[0]}</th><th>${t.kol[1]}</th><th class="n">${t.kol[2]}</th><th class="n">${t.kol[3]}</th><th class="n">${t.kol[4]}</th><th class="n">${t.kol[5]}</th></tr></thead><tbody>` +
+    o.rows.map(r => `<tr><td>${r.u.kod}</td><td>${r.u.ad}<div class="meta">${r.u.bedenler.map(b => t.yas(b).replace(" Yaş", "").replace(" yrs", "")).join(" · ")} × ${r.s}</div></td><td class="n">${r.s}</td><td class="n">${r.adet}</td><td class="n">${tl(r.u.toptan)}</td><td class="n">${tl(r.tutar)}</td></tr>`).join("") +
+    `</tbody></table></div>
+    <div class="totals"><div class="k">${t.toplamAdet}</div><div class="v">${o.adet}</div>
+    <div class="k">${t.ara}</div><div class="v">${tl(o.ara)} TL</div>
+    <div class="k">${t.kdvS}</div><div class="v">${tl(o.kdv)} TL</div>
+    <div class="k grand">${t.genel}</div><div class="v grand">${tl(o.genel)} TL</div></div>`;
+  const m = mesaj(o); $("msgBox").textContent = m; $("msgBox").hidden = false;
+  const wa = $("waLink"); wa.href = "https://wa.me/" + WA_NUMARA + "?text=" + encodeURIComponent(m); wa.setAttribute("aria-disabled", "false");
+  bar.hidden = false; $("barSum").innerHTML = `${fmt(t.barSeri, { s: o.toplamSeri, a: o.adet })}<br><b>${tl(o.ara)} TL</b> ${t.kdv}`;
+}
+function toast(msg) { const el = $("toast"); el.textContent = msg; el.classList.add("show"); clearTimeout(toast._t); toast._t = setTimeout(() => el.classList.remove("show"), 1600); }
+$("copyBtn").addEventListener("click", () => {
+  const m = $("msgBox").textContent; if (!m) return;
+  const sec = () => { const r = document.createRange(); r.selectNodeContents($("msgBox")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(m).then(() => toast(T[dil].kopyalandi)).catch(sec); else sec();
+});
+$("clearBtn").addEventListener("click", () => { seri = {}; kaydet(); document.querySelectorAll(".stepper input").forEach(i => i.value = ""); URUNLER.forEach(satir); ozet(); window.scrollTo({ top: 0 }); });
+$("barBtn").addEventListener("click", () => { $("summary").scrollIntoView({ behavior: "smooth", block: "start" }); });
+$("lang-tr").addEventListener("click", () => { dil = "tr"; kaydet(); cizim(); });
+$("lang-en").addEventListener("click", () => { dil = "en"; kaydet(); cizim(); });
+function cizim() { metinler(); cipler(); kartlar(); ozet(); }
+cizim();
+
+const KOD_HASH = "9f3373d379e8a590abb9f0157bad4553f1d13baa95550a0573d366bfc4ff99da";
+async function sha(x) { const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(x)); return [...new Uint8Array(b)].map(v => v.toString(16).padStart(2, "0")).join(""); }
+(function () {
+  let ok = false; try { ok = localStorage.getItem("fk-toptan-giris") === KOD_HASH; } catch (e) {}
+  const g = document.getElementById("gate"); if (ok) { g.hidden = true; return; }
+  document.getElementById("gateForm").addEventListener("submit", async ev => {
+    ev.preventDefault(); const v = document.getElementById("gateCode").value.trim();
+    if (await sha(v) === KOD_HASH) { try { localStorage.setItem("fk-toptan-giris", KOD_HASH); } catch (e) {} g.hidden = true; }
+    else document.getElementById("gateErr").textContent = T[dil].gateErr;
+  });
+  document.getElementById("gateCode").focus();
+})();
+</script>
+</body>
+</html>
